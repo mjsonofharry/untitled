@@ -7,7 +7,6 @@ const ACCELERATION = 10
 const DEACCELERATION = 10
 const GRAVITY = -9.8
 const JUMP_SPEED = 3
-const MAX_SLOPE_ANGLE = 40
 const LOOK_SENSITIVITY = 0.1
 
 
