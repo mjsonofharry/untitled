@@ -47,9 +47,6 @@ func _process(delta):
 
 
 func _input(ie):
-	var x = 0
-	var y = 0
-
 	if ie is InputEventMouseMotion:
 		m_yaw = fmod(m_yaw - ie.relative[0] * LOOK_SENSITIVITY, 360)
 		m_pitch = max(min(m_pitch - ie.relative[1] * LOOK_SENSITIVITY, 90), -90)
