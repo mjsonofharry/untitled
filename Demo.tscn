@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://PlayerController.gd" type="Script" id=1]
 [ext_resource path="res://checker.png" type="Texture" id=2]
@@ -8,15 +8,11 @@
 radius = 0.6
 height = 0.8
 
-[sub_resource type="RayShape" id=2]
-
-length = 0.4
-
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=2]
 
 extents = Vector3( 1, 1, 1 )
 
-[sub_resource type="CubeMesh" id=4]
+[sub_resource type="CubeMesh" id=3]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
@@ -24,11 +20,11 @@ subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=4]
 
 extents = Vector3( 1, 1, 1 )
 
-[sub_resource type="CubeMesh" id=6]
+[sub_resource type="CubeMesh" id=5]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
@@ -36,7 +32,7 @@ subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=6]
 
 render_priority = 0
 flags_transparent = false
@@ -114,13 +110,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1.
 shape = SubResource( 1 )
 disabled = false
 
-[node name="leg" type="CollisionShape" parent="player" index="1"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
-shape = SubResource( 2 )
-disabled = false
-
-[node name="yaw" type="Spatial" parent="player" index="2"]
+[node name="yaw" type="Spatial" parent="player" index="1"]
 
 [node name="camera" type="Camera" parent="player/yaw" index="0"]
 
@@ -138,14 +128,6 @@ size = 1.0
 near = 0.05
 far = 100.0
 
-[node name="ray" type="RayCast" parent="player" index="3"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
-enabled = false
-exclude_parent = true
-cast_to = Vector3( 0, -0.8, 0 )
-collision_mask = 1
-
 [node name="box" type="StaticBody" parent="." index="1"]
 
 transform = Transform( 1, 0, 0, 0, 3.49974, 0, 0, 0, 1, -0.000310898, 2.19, -3.82642 )
@@ -160,7 +142,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="box" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 disabled = false
 
 [node name="MeshInstance" type="MeshInstance" parent="box" index="1"]
@@ -174,7 +156,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -193,7 +175,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="floor" index="0"]
 
 transform = Transform( 8, 0, 0, 0, 1, 0, 0, 0, 8, 0, 0, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
@@ -209,9 +191,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 6 )
+mesh = SubResource( 5 )
 skeleton = NodePath("..")
-material/0 = SubResource( 7 )
+material/0 = SubResource( 6 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="stairs" type="Spatial" parent="." index="3"]
@@ -232,7 +214,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="stairs/StaticBody3" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 disabled = false
 
 [node name="MeshInstance" type="MeshInstance" parent="stairs/StaticBody3" index="1"]
@@ -246,7 +228,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -264,7 +246,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="stairs/StaticBody4" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 disabled = false
 
 [node name="MeshInstance" type="MeshInstance" parent="stairs/StaticBody4" index="1"]
@@ -278,7 +260,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -296,7 +278,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="stairs/StaticBody5" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 disabled = false
 
 [node name="MeshInstance" type="MeshInstance" parent="stairs/StaticBody5" index="1"]
@@ -310,7 +292,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -328,7 +310,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="stairs/StaticBody6" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 disabled = false
 
 [node name="MeshInstance" type="MeshInstance" parent="stairs/StaticBody6" index="1"]
@@ -342,7 +324,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -360,7 +342,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="stairs/StaticBody7" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 disabled = false
 
 [node name="MeshInstance" type="MeshInstance" parent="stairs/StaticBody7" index="1"]
@@ -374,7 +356,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -392,7 +374,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="stairs/StaticBody8" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 disabled = false
 
 [node name="MeshInstance" type="MeshInstance" parent="stairs/StaticBody8" index="1"]
@@ -406,7 +388,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -424,7 +406,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="stairs/StaticBody9" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 disabled = false
 
 [node name="MeshInstance" type="MeshInstance" parent="stairs/StaticBody9" index="1"]
@@ -438,7 +420,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -456,7 +438,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="stairs/StaticBody10" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 disabled = false
 
 [node name="MeshInstance" type="MeshInstance" parent="stairs/StaticBody10" index="1"]
@@ -470,7 +452,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 
